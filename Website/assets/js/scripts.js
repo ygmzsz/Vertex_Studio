@@ -1,28 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.getElementById("mode-toggle");
-    const body = document.body;
+document.addEventListener("DOMContentLoaded", () => {
+    // ✅ DARK MODE TOGGLE
+    let darkmode = localStorage.getItem('darkmode');
+    const modeToggle = document.getElementById('mode-toggle');
 
-    // Check if user has a preferred theme stored in localStorage
-    if (localStorage.getItem("theme") === "light") {
-        body.classList.add("light-mode");
-        toggleBtn.textContent = "☀️"; // Change icon to Sun
-    }
+    const enableDarkmode = () => {
+        document.body.classList.add('darkmode');
+        localStorage.setItem('darkmode', 'active');
+    };
 
-    // Toggle Dark/Light Mode
-    toggleBtn.addEventListener("click", function () {
-        body.classList.toggle("light-mode");
+    const disableDarkmode = () => {
+        document.body.classList.remove('darkmode');
+        localStorage.setItem('darkmode', 'null');
+    };
 
-        // Store the preference in localStorage
-        if (body.classList.contains("light-mode")) {
-            localStorage.setItem("theme", "light");
-            toggleBtn.textContent = "☀️"; // Sun icon for light mode
-        } else {
-            localStorage.setItem("theme", "dark");
-            toggleBtn.textContent = "🌙"; // Moon icon for dark mode
-        }
+    if (darkmode === 'active') enableDarkmode();
+
+    modeToggle.addEventListener("click", () => {
+        darkmode = localStorage.getItem('darkmode');
+        darkmode !== "active" ? enableDarkmode() : disableDarkmode();
     });
 
-    // Scroll Animation - Show elements when they come into view
+    // ✅ SCROLL ANIMATION - Show elements when they come into view
     function checkScroll() {
         document.querySelectorAll(".scroll-fade").forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
@@ -33,4 +31,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", checkScroll);
     checkScroll(); // Run once on load
+
+    // ✅ CUSTOM CURSOR LOGIC
+    const outerCursor = document.querySelector(".cursor.outer");
+    const innerCursor = document.querySelector(".cursor.inner");
+    const interactiveElements = document.querySelectorAll("a, button, .game-card");
+
+    // Move the cursor smoothly
+    window.addEventListener("mousemove", (e) => {
+        let x = e.clientX -8;
+        let y = e.clientY -140;
+
+        outerCursor.style.transform = `translate(${x}px, ${y}px)`;
+        innerCursor.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Add hover effect to interactive elements
+    interactiveElements.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+            outerCursor.classList.add("hover");
+            innerCursor.classList.add("hover");
+        });
+
+        el.addEventListener("mouseleave", () => {
+            outerCursor.classList.remove("hover");
+            innerCursor.classList.remove("hover");
+        });
+    });
 });

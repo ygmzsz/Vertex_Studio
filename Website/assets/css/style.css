@@ -1,3 +1,11 @@
+:root{
+    --base-color: white;
+    --base-variant: #cfc8bd;
+    --text-color: #110f13;
+    --secondary-text: #302b36;
+    --primary-color: #e53030;
+    --accent-color: #91262b;
+}
 /* Hero Section - Fade-in Effect */
 @keyframes fadeIn {
     from {
@@ -25,7 +33,37 @@
         opacity: 1;
     }
 }
-
+.darkmode{
+    --base-color: #282f32;
+    --base-variant: #4d474f;
+    --text-color: #e51e1b;
+    --secondary-text: #c0191f;
+    --primary-color: #7f1416;
+    --accent-color: #e51e1b;
+}
+#mode-toggle{
+    height:50px;
+    width: 50px;
+    padding: 0;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    right: 20px;
+}
+#mode-toggle svg{
+    fill: var(--primary-color);
+}
+#mode-toggle svg:last-child{
+    display: none;
+}
+.darkmode #mode-toggle svg:first-child{
+    display: none;
+}
+.darkmode #mode-toggle svg:last-child{
+    display: block;
+}
 .navbar {
     animation: slideDown 0.5s ease-in-out;
 }
@@ -71,3 +109,92 @@
 .video-container:hover video {
     transform: scale(1.05);
 }
+/* ✅ General Styling for the Website */
+body {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* ✅ Navbar Styling */
+.navbar {
+    background-color: var(--base-variant) !important;
+    color: var(--text-color);
+}
+
+/* ✅ Buttons */
+.btn {
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border: none;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+/* ✅ Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-text);
+}
+
+/* ✅ Links */
+a {
+    color: var(--primary-color);
+    transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* ✅ Card Backgrounds */
+.game-card {
+    background-color: var(--base-variant);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}/* Custom Cursor */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none; /* Ensures cursor doesn't interfere with clicks */
+    z-index: 9999;
+    transition: transform 0.15s ease-out, background-color 0.2s ease-out;
+}
+
+.outer {
+    border: 2px solid var(--primary-color);
+    transform: translate(-50%, -50%);
+}
+
+.inner {
+    background: var(--primary-color);
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: transform 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+/* When hovering over a link or button */
+.cursor.hover {
+    transform: translate(-50%, -50%) scale(1.8);
+}
+
+.inner.hover {
+    background: var(--accent-color);
+}
+
+/* Hide the default cursor */
+body, a, button {
+    cursor: none;
+}
+
