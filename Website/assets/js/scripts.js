@@ -39,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Move the cursor smoothly
     window.addEventListener("mousemove", (e) => {
-        let x = e.clientX -8;
-        let y = e.clientY -140;
+        let x = e.clientX;
+        let y = e.clientY;
 
         outerCursor.style.transform = `translate(${x}px, ${y}px)`;
         innerCursor.style.transform = `translate(${x}px, ${y}px)`;
