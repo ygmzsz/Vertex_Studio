@@ -46,10 +46,17 @@
         </div>
     </header>
     <div class="video-container">
-        <video id="background-video" autoplay loop muted>
-            <source src="assets/vid/7667876-hd_1920_1080_25fps.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <!-- Light Mode Video -->
+    <video id="light-video" autoplay loop muted>
+        <source src="assets/vid/7667876-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Dark Mode Video -->
+    <video id="dark-video" autoplay loop muted style="display: none;">
+        <source src="assets/vid/backgorund.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     </div>
     
     <!-- Gallery Section -->
@@ -109,23 +116,23 @@
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="news">
-        <div class="container">
-            <h2>Latest News</h2>
-            <p>Stay updated with our latest game development progress and news.</p>
-            <a href="blog.html" class="btn btn-secondary btn-light">Read More</a>
+  <!-- News & Contact Section -->
+<section class="news-contact">
+    <div class="container">
+        <div class="news-contact-box">
+            <div class="news-box">
+                <h2>Latest News</h2>
+                <p>Stay updated with our latest game development progress and news.</p>
+                <a href="blog.html" class="btn btn-secondary btn-light">Read More</a>
+            </div>
+            <div class="contact-box">
+                <h2>Contact Us</h2>
+                <p>Want to collaborate or learn more about our games? Reach out!</p>
+                <a href="contact.html" class="btn btn-primary btn-light">Get in Touch</a>
+            </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Want to collaborate or learn more about our games? Reach out!</p>
-            <a href="contact.html" class="btn btn-primary btn-light">Get in Touch</a>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="text-center py-4">

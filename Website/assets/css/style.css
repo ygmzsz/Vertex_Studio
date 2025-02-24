@@ -213,22 +213,46 @@ body {
     border-radius: 10px;
 }
 
-/* ✅ NEWS SECTION */
-.news {
+/* ✅ NEWS & CONTACT SECTION */
+.news-contact {
     background: var(--primary-color);
     color: white;
     padding: 60px 0;
     text-align: center;
 }
 
-.darkmode .news {
+.news-contact-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.news-box,
+.contact-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .news-contact-box {
+        flex-direction: column;
+    }
+}
+
+/* Dark Mode */
+.darkmode .news-contact {
     background: var(--primary-dark);
 }
 
-/* ✅ CONTACT SECTION */
-.contact {
-    padding: 80px 0;
-    text-align: center;
+/* Dark Mode */
+.darkmode .news-contact {
+    background: var(--primary-dark);
 }
 
 .contact .btn-light {
@@ -284,21 +308,22 @@ footer {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60vh; /* Adjust the height to stop above the gallery */
+    height: calc(100vh - 80px);
     overflow: hidden;
-    z-index: -1; /* Push it behind content */
+    z-index: -1; 
 }
 
 .video-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(8px); /* Apply blur effect */
-    opacity: 0.8; /* Optional: Make it slightly transparent */
+    filter: blur(8px); 
+    opacity: 0.8; 
     transition: filter 0.3s ease;
 }
 
+
 /* Dark mode */
 .darkmode .video-container video {
-    filter: blur(8px); /* Keep blur in dark mode */
+    filter: blur(8px);
 }

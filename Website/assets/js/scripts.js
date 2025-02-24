@@ -2,18 +2,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // ✅ DARK MODE TOGGLE
     let darkmode = localStorage.getItem('darkmode');
     const modeToggle = document.getElementById('mode-toggle');
+    const lightVideo = document.getElementById("light-video");
+    const darkVideo = document.getElementById("dark-video");
 
     const enableDarkmode = () => {
         document.body.classList.add('darkmode');
         localStorage.setItem('darkmode', 'active');
+        switchVideo(true);
     };
 
     const disableDarkmode = () => {
         document.body.classList.remove('darkmode');
         localStorage.setItem('darkmode', 'null');
+        switchVideo(false);
+    };
+
+    const switchVideo = (isDarkMode) => {
+        if (isDarkMode) {
+            lightVideo.style.display = "none";
+            darkVideo.style.display = "block";
+            darkVideo.play();
+            lightVideo.pause();
+        } else {
+            lightVideo.style.display = "block";
+            darkVideo.style.display = "none";
+            lightVideo.play();
+            darkVideo.pause();
+        }
     };
 
     if (darkmode === 'active') enableDarkmode();
+    else disableDarkmode();
 
     modeToggle.addEventListener("click", () => {
         darkmode = localStorage.getItem('darkmode');
